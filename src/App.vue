@@ -275,6 +275,13 @@ button {
     gap: 1rem;
 }
 
+@media screen and (min-width: 770px) {
+    .comment-content.updating {
+        grid-column: 2 / span 2;
+        grid-row: 2;
+    }
+}
+
 
 .comment-actions {
     align-items: center;
