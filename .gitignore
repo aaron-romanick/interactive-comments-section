@@ -29,3 +29,6 @@ coverage
 
 /.vscode/
 /style-guide.md
+
+# Deployment script
+/deploy.sh
