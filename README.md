@@ -1,4 +1,4 @@
-Interactive Comments Section Solution
+# Frontend Mentor - Interactive Comments Section Solution
 
 This is a solution to the [Interactive Comments Section on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
