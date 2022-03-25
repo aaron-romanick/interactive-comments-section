@@ -1,6 +1,6 @@
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en.json'
-import type { IUseTimeAgo } from '../interfaces/IUseTimeAgo.ts'
+import type { IUseTimeAgo } from '../interfaces/IUseTimeAgo'
 
 TimeAgo.addDefaultLocale(en)
 const timeAgo: TimeAgo = new TimeAgo('en-US')

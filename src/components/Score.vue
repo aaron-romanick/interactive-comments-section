@@ -1,7 +1,7 @@
 
 
 <script setup lang="ts">
-import { useState } from '../composables/state.ts'
+import { useState } from '../composables/state'
 
 const props = defineProps<{
     id: number

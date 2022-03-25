@@ -1,9 +1,9 @@
 import { computed, reactive, readonly } from 'vue'
 import type { ComputedRef } from 'vue'
-import { ACTION_TYPE } from '../constants/ACTION_TYPE.ts'
-import type { IComment } from '../interfaces/IComment.ts'
-import type { IData } from '../interfaces/IData.ts'
-import type { IState } from '../interfaces/IState.ts'
+import { ACTION_TYPE } from '../constants/ACTION_TYPE'
+import type { IComment } from '../interfaces/IComment'
+import type { IData } from '../interfaces/IData'
+import type { IState } from '../interfaces/IState'
 
 const STORAGE_KEY: string = 'interactive-comments-section-main'
 

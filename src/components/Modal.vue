@@ -2,7 +2,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref, toRefs, watchEffect } from 'vue'
-import { useState } from '../composables/state.ts'
+import { useState } from '../composables/state'
 
 const {
     state,

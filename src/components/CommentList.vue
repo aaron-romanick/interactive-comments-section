@@ -2,7 +2,7 @@
 
 <script setup lang="ts">
 import Comment from './Comment.vue'
-import { useState } from '../composables/state.ts'
+import { useState } from '../composables/state'
 
 interface Props {
     parentId?: number | null

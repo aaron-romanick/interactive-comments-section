@@ -3,7 +3,7 @@
 <script setup lang="ts">
 import { computed, ref, toRefs } from 'vue'
 import type { ComputedRef, Ref } from 'vue'
-import { REPLYING, useState } from '../composables/state.ts'
+import { REPLYING, useState } from '../composables/state'
 
 const props = defineProps<{
     buttonText: string

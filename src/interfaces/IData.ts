@@ -1,5 +1,5 @@
-import type { IComment } from './IComment.ts'
-import type { IUser } from './IUser.ts'
+import type { IComment } from './IComment'
+import type { IUser } from './IUser'
 
 export interface IData {
     currentUser: IUser

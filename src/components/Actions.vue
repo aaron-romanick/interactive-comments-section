@@ -3,8 +3,8 @@
 <script setup lang="ts">
 import { computed, ref, toRefs } from 'vue'
 import type { ComputedRef } from 'vue'
-import { DELETING, EDITTING, REPLYING, useState } from '../composables/state.ts'
-import type { IUser } from '../interfaces/IUser.ts'
+import { DELETING, EDITTING, REPLYING, useState } from '../composables/state'
+import type { IUser } from '../interfaces/IUser'
 
 const props = defineProps<{
     id: number

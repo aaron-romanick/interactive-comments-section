@@ -1,4 +1,4 @@
-import type { IUser } from './IUser.ts'
+import type { IUser } from './IUser'
 
 export interface IComment {
     id: number

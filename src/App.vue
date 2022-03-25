@@ -5,7 +5,7 @@ import { toRefs } from 'vue'
 import AddComment from './components/AddComment.vue'
 import Modal from './components/Modal.vue'
 import CommentList from './components/CommentList.vue'
-import { useState } from './composables/state.ts'
+import { useState } from './composables/state'
 
 const {
     isDataLoaded,
