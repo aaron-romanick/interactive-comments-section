@@ -1,19 +1,14 @@
 
 
-<script setup>
+<script setup lang="ts">
 import { computed, ref, toRefs } from 'vue'
-import { REPLYING, useState } from '../composables/state.js'
+import type { ComputedRef, Ref } from 'vue'
+import { REPLYING, useState } from '../composables/state.ts'
 
-const props = defineProps({
-    buttonText: {
-        type: String,
-        required: true,
-    },
-    parentId: {
-        type: Number,
-        default: null,
-    }
-})
+const props = defineProps<{
+    buttonText: string
+    parentId?: number
+}>()
 
 const {
     state,
@@ -26,13 +21,15 @@ const {
     currentUser,
 } = toRefs(state)
 
-const content = ref('')
+const content: Ref<string> = ref('')
 
-const isReplyingComment = computed(() => {
-    return activeId.value === props.parentId && actionType.value === REPLYING
-})
+const isReplyingComment: ComputedRef<boolean> = computed(
+    (): boolean => {
+        return activeId.value === props.parentId && actionType.value === REPLYING
+    }
+)
 
-const post = function() {
+const post = (): void => {
     addComment(content.value, props.parentId)
     content.value = ''
     setActive(null, null)

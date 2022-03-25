@@ -1,54 +1,25 @@
 
 
-<script setup>
+<script setup lang="ts">
 import { computed, ref, toRefs } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
 import Actions from './Actions.vue'
 import Content from './Content.vue'
 import AddComment from './AddComment.vue'
 import Score from './Score.vue'
 import CommentList from './CommentList.vue'
 import Transitioner from './Transitioner.vue'
-import { EDITTING, REPLYING, useState } from '../composables/state.js'
-import { useTimeAgo } from '../composables/time-ago.js'
+import type { IUser } from '../interfaces/IUser.ts'
+import { EDITTING, REPLYING, useState } from '../composables/state.ts'
+import { useTimeAgo } from '../composables/time-ago.ts'
 
-const props = defineProps({
-    id: {
-        type: Number,
-        required: true,
-        validator(value) {
-            const regex = /^[1-9][0-9]*$/
-            return regex.test(value)
-        },
-    },
-    user: {
-        type: Object,
-        required: true,
-        validator(value) {
-            return value.hasOwnProperty('image') &&
-                value.hasOwnProperty('username')
-        },
-    },
-    createdAt: {
-        type: Number,
-        required: true,
-        validator(value) {
-            const regex = /^[1-9][0-9]{12}$/
-            return regex.test(value)
-        },
-    },
-    score: {
-        type: Number,
-        required: true,
-        validator(value) {
-            const regex = /^[0-9]+$/
-            return regex.test(value)
-        },
-    },
-    content: {
-        type: String,
-        required: true,
-    },
-})
+const props = defineProps<{
+    id: number
+    user: IUser
+    createdAt: number
+    score: number
+    content: string
+}>()
 
 const {
     state,
@@ -61,19 +32,23 @@ const {
     currentUser,
 } = toRefs(state)
 
-const content = ref(props.content)
+const content: Ref<string> = ref(props.content)
 
 const { humanReadableTime } = useTimeAgo()
 
-const isCurrentUser = computed(() => {
-    return isDataLoaded
-        ? props.user.username === currentUser.value.username
-        : false
-})
+const isCurrentUser: ComputedRef<boolean> = computed(
+    (): boolean => {
+        return isDataLoaded
+            ? props.user.username === currentUser.value.username
+            : false
+    }
+)
 
-const isReplying = computed(() => {
-    return activeId.value === props.id && actionType.value === REPLYING
-})
+const isReplying: ComputedRef<boolean> = computed(
+    (): boolean => {
+        return activeId.value === props.id && actionType.value === REPLYING
+    }
+)
 </script>
 
 <template>

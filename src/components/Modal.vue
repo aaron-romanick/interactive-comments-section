@@ -1,8 +1,8 @@
 
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref, toRefs, watchEffect } from 'vue'
-import { useState } from '../composables/state.js'
+import { useState } from '../composables/state.ts'
 
 const {
     state,
@@ -15,27 +15,29 @@ const {
     isModalActive: isActive
 } = toRefs(state)
 
-const modal = ref(null)
+const modal: Ref<HTMLDialogElement> = ref(null)
 
-onMounted(() => {
-    watchEffect(() => {
-        isActive.value
-            ? modal.value.showModal()
-            : modal.value.close()
-    })
-})
+onMounted(
+    (): void => {
+        watchEffect((): void => {
+            isActive.value
+                ? modal.value.showModal()
+                : modal.value.close()
+        })
+    }
+)
 
-const close = function() {
+const close = (): void => {
     setActive(null, null)
     toggleModal(false)
 }
 
-const cancel = function() {
+const cancel = (): void => {
     close()
 }
 
-const remove = function() {
-    deleteComment(activeId)
+const remove = (): void => {
+    deleteComment(activeId.value)
     close()
 }
 </script>

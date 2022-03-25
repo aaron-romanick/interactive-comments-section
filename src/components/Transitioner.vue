@@ -1,12 +1,9 @@
 
 
-<script setup>
-const props = defineProps({
-    activator: {
-        type: [Boolean, Function],
-        required: true,
-    },
-})
+<script setup lang="ts">
+const props = defineProps<{
+    activator: boolean
+}>()
 </script>
 
 <template>

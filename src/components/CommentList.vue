@@ -1,18 +1,15 @@
 
 
-<script setup>
+<script setup lang="ts">
 import Comment from './Comment.vue'
-import { useState } from '../composables/state.js'
+import { useState } from '../composables/state.ts'
 
-const props = defineProps({
-    parentId: {
-        type: Number,
-        default: null,
-        validator(value) {
-            const regex = /^[1-9][0-9]*$/
-            return value === null || regex.test(value)
-        },
-    },
+interface Props {
+    parentId?: number | null
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    parentId: null,
 })
 
 const { replies } = useState()

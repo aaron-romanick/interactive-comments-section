@@ -1,27 +1,15 @@
 
 
-<script setup>
+<script setup lang="ts">
 import { computed, ref, toRefs } from 'vue'
-import { DELETING, EDITTING, REPLYING, useState } from '../composables/state.js'
+import type { ComputedRef } from 'vue'
+import { DELETING, EDITTING, REPLYING, useState } from '../composables/state.ts'
+import type { IUser } from '../interfaces/IUser.ts'
 
-const props = defineProps({
-    id: {
-        type: Number,
-        required: true,
-        validator(value) {
-            const regex = /^[1-9][0-9]*$/
-            return regex.test(value)
-        },
-    },
-    user: {
-        type: Object,
-        required: true,
-        validator(value) {
-            return value.hasOwnProperty('image') &&
-                value.hasOwnProperty('username')
-        },
-    },
-})
+const props = defineProps<{
+    id: number
+    user: IUser
+}>()
 
 const {
     state,
@@ -32,13 +20,15 @@ const {
 } = useState()
 const { currentUser } = toRefs(state)
 
-const isCurrentUser = computed(() => {
-    return isDataLoaded
-        ? props.user.username === currentUser.value.username
-        : false
-})
+const isCurrentUser: ComputedRef<boolean> = computed(
+    (): boolean => {
+        return isDataLoaded
+            ? props.user.username === currentUser.value.username
+            : false
+    }
+)
 
-const showModal = function() {
+const showModal = (): void => {
     setActive(props.id, DELETING)
     toggleModal(true)
 }

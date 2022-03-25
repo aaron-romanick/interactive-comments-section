@@ -1,23 +1,14 @@
 
 
-<script setup>
+<script setup lang="ts">
 import { computed, ref, toRefs } from 'vue'
-import { EDITTING, useState } from '../composables/state.js'
+import type { ComputedRef, Ref } from 'vue'
+import { EDITTING, useState } from '../composables/state.ts'
 
-const props = defineProps({
-    id: {
-        type: Number,
-        required: true,
-        validator(value) {
-            const regex = /^[1-9][0-9]*$/
-            return regex.test(value)
-        },
-    },
-    content: {
-        type: String,
-        required: true,
-    },
-})
+const props = defineProps<{
+    id: number
+    content: string
+}>()
 
 const {
     state,
@@ -29,19 +20,23 @@ const {
     actionType,
 } = toRefs(state)
 
-const content = ref(props.content)
+const content: Ref<string> = ref(props.content)
 
-const isEditting = computed(() => {
-    return activeId.value === props.id && actionType.value === EDITTING
-})
+const isEditting: ComputedRef<boolean> = computed(
+    (): boolean => {
+        return activeId.value === props.id && actionType.value === EDITTING
+    }
+)
 
-const formattedContent = computed(() => {
-    const regex = /(@[A-Za-z0-9_]+)/g
-    const replacement = '<span class="mention">$1</span>'
-    return content.value.replace(regex, replacement)
-})
+const formattedContent: ComputedRef<string> = computed(
+    (): string => {
+        const regex: RegExp = /(@[A-Za-z0-9_]+)/g
+        const replacement: string = '<span class="mention">$1</span>'
+        return content.value.replace(regex, replacement)
+    }
+)
 
-const update = function() {
+const update = (): void => {
     updateComment(content.value, props.id)
     setActive(null, null)
 }

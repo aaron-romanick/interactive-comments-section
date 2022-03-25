@@ -1,13 +1,16 @@
 
 
-<script setup>
+<script setup lang="ts">
 import { toRefs } from 'vue'
 import AddComment from './components/AddComment.vue'
 import Modal from './components/Modal.vue'
 import CommentList from './components/CommentList.vue'
-import { useState } from './composables/state.js'
+import { useState } from './composables/state.ts'
 
-const { isDataLoaded, loadData } = useState()
+const {
+    isDataLoaded,
+    loadData,
+} = useState()
 loadData()
 </script>
 

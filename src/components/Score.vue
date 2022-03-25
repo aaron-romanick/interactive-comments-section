@@ -1,33 +1,20 @@
 
 
-<script setup>
-import { useState } from '../composables/state.js'
+<script setup lang="ts">
+import { useState } from '../composables/state.ts'
 
-const props = defineProps({
-    id: {
-        type: Number,
-        required: true,
-        validator(value) {
-            const regex = /^[1-9][0-9]*$/
-            return regex.test(value)
-        },
-    },
-    score: {
-        type: Number,
-        required: true,
-        validator(value) {
-            const regex = /^[0-9]+$/
-            return regex.test(value)
-        },
-    },
-})
+const props = defineProps<{
+    id: number
+    score: number,
+}>()
+
 const { changeScore } = useState()
 
-const increment = function() {
+const increment = (): void => {
     changeScore(props.id, 1)
 }
 
-const decrement = function() {
+const decrement = (): void => {
     changeScore(props.id, -1)
 }
 </script>
