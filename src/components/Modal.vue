@@ -2,6 +2,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref, toRefs, watchEffect } from 'vue'
+import type { Ref } from 'vue'
 import { useState } from '../composables/state'
 
 const {
@@ -15,7 +16,7 @@ const {
     isModalActive: isActive
 } = toRefs(state)
 
-const modal: Ref<HTMLDialogElement> = ref(null)
+const modal: Ref<HTMLDialogElement | null> = ref(null)
 
 onMounted(
     (): void => {
@@ -37,7 +38,7 @@ const cancel = (): void => {
 }
 
 const remove = (): void => {
-    deleteComment(activeId.value)
+    if(activeId.value !== null) deleteComment(activeId.value)
     close()
 }
 </script>

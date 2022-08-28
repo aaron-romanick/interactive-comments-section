@@ -4,6 +4,6 @@ interface IUserImage {
 }
 
 export interface IUser {
-    image: IUserImage
-    username: string
+    image?: IUserImage
+    username?: string
 }

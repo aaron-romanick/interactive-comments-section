@@ -3,14 +3,13 @@ import type { ComputedRef } from 'vue'
 import { ACTION_TYPE } from '../constants/ACTION_TYPE'
 import type { IComment } from '../interfaces/IComment'
 import type { IData } from '../interfaces/IData'
-import type { IState } from '../interfaces/IState'
 
-const STORAGE_KEY: string = 'interactive-comments-section-main'
+const STORAGE_KEY = 'interactive-comments-section-main' as const
 
-const state: IState = reactive({
-    actionType: null,
-    activeId: null,
-    comments: [],
+const state = reactive({
+    actionType: null as string | null,
+    activeId: null as number | null,
+    comments: [] as IComment[],
     currentUser: {},
     isModalActive: false,
 })
@@ -34,10 +33,10 @@ async function fetchData() {
     return alteredData
 }
 
-function findReplies(id: number): number[] {
+function findReplies(id: number) {
     const parentIds: number[] = []
     const filteredComments: IComment[] = state.comments.filter(
-        (comment: IComment): boolean => {
+        (comment: IComment) => {
             return comment.parentId === id
         }
     )
@@ -52,9 +51,9 @@ function findReplies(id: number): number[] {
     return parentIds
 }
 
-export const DELETING: ACTION_TYPE = ACTION_TYPE.DELETING
-export const EDITTING: ACTION_TYPE = ACTION_TYPE.EDITTING
-export const REPLYING: ACTION_TYPE = ACTION_TYPE.REPLYING
+export const DELETING = ACTION_TYPE.DELETING
+export const EDITTING = ACTION_TYPE.EDITTING
+export const REPLYING = ACTION_TYPE.REPLYING
 export function useState() {
 
     const commentsByTimestamp: ComputedRef<IComment[]> = computed(
@@ -86,9 +85,9 @@ export function useState() {
     }
 
     function changeScore(id: number, amount: number): void {
-        const comment: IComment =  state.comments.find(
+        const comment: IComment = state.comments.find(
             (comment: IComment): boolean => comment.id === id
-        )
+        )!
         const newScore: number = comment.score + amount
         comment.score = newScore >= 0
             ? newScore
@@ -100,7 +99,7 @@ export function useState() {
         const parentIds: Set<number> = new Set(findReplies(id))
         state.comments = state.comments.filter(
             (comment: IComment): boolean => {
-                return comment.id !== id && !parentIds.has(comment.parentId)
+                return comment.id !== id && !parentIds.has(comment.parentId as number)
             }
         )
         saveData()
@@ -140,7 +139,7 @@ export function useState() {
         )
     }
 
-    function saveData(): void {
+    function saveData() {
         const data: IData = {
             currentUser: state.currentUser,
             comments: state.comments,
@@ -149,16 +148,16 @@ export function useState() {
 
     }
 
-    function setActive(id: number, activityType: ACTION_TYPE): void {
+    function setActive(id: number | null, activityType: string | null) {
         state.activeId = id
         state.actionType = activityType
     }
 
-    function toggleModal(isActive: boolean): void {
+    function toggleModal(isActive: boolean) {
         state.isModalActive = isActive
     }
 
-    function updateComment(content: string, id: number): void {
+    function updateComment(content: string, id: number) {
         state.comments = state.comments.map(
             (comment: IComment): IComment => {
                 if(comment.id === id) {

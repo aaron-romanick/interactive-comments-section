@@ -1,5 +1,3 @@
-
-
 <script setup lang="ts">
 import { toRefs } from 'vue'
 import AddComment from './components/AddComment.vue'

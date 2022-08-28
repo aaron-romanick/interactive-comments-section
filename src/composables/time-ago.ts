@@ -1,13 +1,12 @@
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en.json'
-import type { IUseTimeAgo } from '../interfaces/IUseTimeAgo'
 
 TimeAgo.addDefaultLocale(en)
-const timeAgo: TimeAgo = new TimeAgo('en-US')
+const timeAgo = new TimeAgo('en-US')
 
-export function useTimeAgo(): IUseTimeAgo {
+export function useTimeAgo() {
 
-    function humanReadableTime(timestamp: number): string {
+    function humanReadableTime(timestamp: number) {
         return timeAgo.format(timestamp)
     }
 
