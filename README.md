@@ -32,7 +32,7 @@ Users should be able to:
 ### <a name="links"></a>Links
 
 - Solution URL: [https://www.frontendmentor.io/solutions/interactive-comments-section-using-vue-3-S1CbBO_M5](https://www.frontendmentor.io/solutions/interactive-comments-section-using-vue-3-S1CbBO_M5)
-- Live Site URL: [https://nisenihonjin.github.io/interactive-comments-section/](https://nisenihonjin.github.io/interactive-comments-section/)
+- Live Site URL: [https://aaron-romanick.github.io/interactive-comments-section/](https://aaron-romanick.github.io/interactive-comments-section/)
 
 ## <a name="my-process"></a>My Process
 
@@ -59,4 +59,4 @@ One thing I wish I did more was in regard to animations. New comments, updating,
 ## <a name="author"></a>Author
 
 - Website - [Aaron Romanick](https://www.aaronromanick.com)
-- Frontend Mentor - [@nisenihonjin](https://www.frontendmentor.io/profile/nisenihonjin)
+- Frontend Mentor - [@aaron-romanick](https://www.frontendmentor.io/profile/aaron-romanick)
