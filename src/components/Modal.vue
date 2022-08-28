@@ -22,8 +22,8 @@ onMounted(
     (): void => {
         watchEffect((): void => {
             isActive.value
-                ? modal.value.showModal()
-                : modal.value.close()
+                ? modal.value!.showModal()
+                : modal.value!.close()
         })
     }
 )

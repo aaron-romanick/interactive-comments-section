@@ -18,7 +18,7 @@ const { replies } = useState()
 <template>
     <div class="comment-list">
         <Comment
-            v-for="comment in replies(props.parentId)"
+            v-for="comment in replies(props.parentId as number)"
             :key="comment.id"
             :id="comment.id"
             :user="comment.user"

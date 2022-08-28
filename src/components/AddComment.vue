@@ -23,12 +23,6 @@ const {
 
 const content: Ref<string> = ref('')
 
-const isReplyingComment: ComputedRef<boolean> = computed(
-    (): boolean => {
-        return activeId.value === props.parentId && actionType.value === REPLYING
-    }
-)
-
 const post = (): void => {
     addComment(content.value, props.parentId)
     content.value = ''
@@ -39,9 +33,9 @@ const post = (): void => {
 <template>
     <div class="add-comment" >
         <picture class="avatar"
-            ><source type="image/webp" :srcset="currentUser.image.webp"
-            ><source type="image/png" :srcset="currentUser.image.png"
-            ><img :src="currentUser.image.png" :alt="`${currentUser.username}'s avatar`">
+            ><source type="image/webp" :srcset="currentUser.image!.webp"
+            ><source type="image/png" :srcset="currentUser.image!.png"
+            ><img :src="currentUser.image!.png" :alt="`${currentUser.username}'s avatar`">
         </picture>
         <textarea
             class="input"

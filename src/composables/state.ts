@@ -3,6 +3,7 @@ import type { ComputedRef } from 'vue'
 import { ACTION_TYPE } from '../constants/ACTION_TYPE'
 import type { IComment } from '../interfaces/IComment'
 import type { IData } from '../interfaces/IData'
+import type { IUser } from '../interfaces/IUser'
 
 const STORAGE_KEY = 'interactive-comments-section-main' as const
 
@@ -10,7 +11,7 @@ const state = reactive({
     actionType: null as string | null,
     activeId: null as number | null,
     comments: [] as IComment[],
-    currentUser: {},
+    currentUser: {} as IUser,
     isModalActive: false,
 })
 

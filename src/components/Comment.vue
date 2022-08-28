@@ -60,9 +60,9 @@ const isReplying: ComputedRef<boolean> = computed(
             />
             <div class="comment-details">
                 <picture class="avatar avatar-small"
-                    ><source type="image/webp" :srcset="props.user.image.webp"
-                    ><source type="image/png" :srcset="props.user.image.png"
-                    ><img :src="props.user.image.png" :alt="`${props.user.username}'s avatar`">
+                    ><source type="image/webp" :srcset="props.user.image!.webp"
+                    ><source type="image/png" :srcset="props.user.image!.png"
+                    ><img :src="props.user.image!.png" :alt="`${props.user.username}'s avatar`">
                 </picture>
                 <div class="username">
                     {{ props.user.username }}
