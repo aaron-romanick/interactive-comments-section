@@ -10,7 +10,7 @@ import Score from './Score.vue'
 import CommentList from './CommentList.vue'
 import Transitioner from './Transitioner.vue'
 import type { IUser } from '../interfaces/IUser'
-import { EDITTING, REPLYING, useState } from '../composables/state'
+import { REPLYING, useState } from '../composables/state'
 import { useTimeAgo } from '../composables/time-ago'
 
 const props = defineProps<{
