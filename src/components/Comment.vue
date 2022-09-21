@@ -64,13 +64,13 @@ const isReplying: ComputedRef<boolean> = computed(
                     ><source type="image/png" :srcset="props.user.image!.png"
                     ><img :src="props.user.image!.png" :alt="`${props.user.username}'s avatar`">
                 </picture>
-                <div class="username">
+                <h2 class="username">
                     {{ props.user.username }}
                     <span
                         v-if="isCurrentUser"
                         class="self"
                     >you</span>
-                </div>
+                </h2>
                 <div class="created-at">{{ humanReadableTime(createdAt) }}</div>
             </div>
             <Actions

@@ -13,6 +13,9 @@ loadData()
 </script>
 
 <template>
+    <header class="visually-hidden">
+        <h1>Interactive Comments Section</h1>
+    </header>
     <main>
         <CommentList />
         <AddComment
@@ -232,7 +235,10 @@ button {
 
 .username {
     color: var(--color-dark-blue);
+    font-size: inherit;
     font-weight: var(--font-weight-bold);
+    margin: 0;
+    padding: 0;
     white-space: nowrap;
 }
 
@@ -528,5 +534,17 @@ button {
 
 .button-confirm-delete:hover {
     background: var(--color-pale-red);
+}
+
+.visually-hidden {
+  border: 0 !important;
+  clip: rect(0,0,0,0) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
 }
 </style>
